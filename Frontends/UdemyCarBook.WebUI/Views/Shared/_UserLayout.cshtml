@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>@ViewData["Title"] - CarBook</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/carbook-master/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="~/carbook-master/css/animate.css">
+    <link rel="stylesheet" href="~/carbook-master/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/carbook-master/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/carbook-master/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/carbook-master/css/aos.css">
+    <link rel="stylesheet" href="~/carbook-master/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/carbook-master/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="~/carbook-master/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="~/carbook-master/css/flaticon.css">
+    <link rel="stylesheet" href="~/carbook-master/css/icomoon.css">
+    <link rel="stylesheet" href="~/carbook-master/css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Car<span>Book</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="/Home/Index" class="nav-link">Anasayfa</a></li>
+                    <li class="nav-item"><a href="/about" class="nav-link">Hakkımızda</a></li>
+                    <li class="nav-item"><a href="/service" class="nav-link">Servisler</a></li>
+                    <li class="nav-item"><a href="/carpricing" class="nav-link">Fiyatlar</a></li>
+                    <li class="nav-item"><a href="/Car/Index" class="nav-link">Araçlar</a></li>
+                    <li class="nav-item"><a href="/blog/Index" class="nav-link">Bloglar</a></li>
+                    <li class="nav-item"><a href="/contact" class="nav-link">İletişim</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SAYFA İÇERİĞİ BURAYA GELİR -->
+    @RenderBody()
+
+    <!-- FOOTER -->
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2"><a href="#" class="logo">Car<span>book</span></a></h2>
+                        <p>Bize buradan ulaşabilirsiniz.</p>
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4 ml-md-5">
+                        <h2 class="ftco-heading-2">Bilgi</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="py-2 d-block">Hakkımızda</a></li>
+                            <li><a href="#" class="py-2 d-block">Servisler</a></li>
+                            <li><a href="#" class="py-2 d-block">Şartlar ve Koşullar</a></li>
+                            <li><a href="#" class="py-2 d-block">En İyi Fiyat Garantisi</a></li>
+                            <li><a href="#" class="py-2 d-block">Gizlilik Politikası</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Müşteri Desteği</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="py-2 d-block">Faks</a></li>
+                            <li><a href="#" class="py-2 d-block">Ödeme Seçenekleri</a></li>
+                            <li><a href="#" class="py-2 d-block">Rezervasyon İpuçları</a></li>
+                            <li><a href="#" class="py-2 d-block">Çalışma Şartları</a></li>
+                            <li><a href="#" class="py-2 d-block">Bize Ulaşın</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Sorunuz mu var?</h2>
+                        <div class="block-23 mb-3">
+                            <ul>
+                                <li><span class="icon icon-map-marker"></span><span class="text">FSM cad.No:26 Nilüfer/BURSA</span></li>
+                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">0535 465 98 56 </span></a></li>
+                                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@carbook.com</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+    
+
+    <!-- JS -->
+    <script src="~/carbook-master/js/jquery.min.js"></script>
+    <script src="~/carbook-master/js/popper.min.js"></script>
+    <script src="~/carbook-master/js/bootstrap.min.js"></script>
+
+    <script src="~/carbook-master/js/jquery.easing.1.3.js"></script>
+
+    <script src="~/carbook-master/js/jquery.waypoints.min.js"></script>
+    <script src="~/carbook-master/js/jquery.stellar.min.js"></script> <!-- (istersen kaldır) -->
+
+    <script src="~/carbook-master/js/owl.carousel.min.js"></script>
+
+    <script src="~/carbook-master/js/jquery.magnific-popup.min.js"></script>
+
+    <script src="~/carbook-master/js/aos.js"></script>
+
+    <script src="~/carbook-master/js/jquery.animateNumber.min.js"></script>
+    <script src="~/carbook-master/js/bootstrap-datepicker.js"></script>
+    <script src="~/carbook-master/js/jquery.timepicker.min.js"></script>
+
+    <script src="~/carbook-master/js/scrollax.min.js"></script>
+
+    <script src="~/carbook-master/js/main.js"></script>
+
+</body>
+</html>

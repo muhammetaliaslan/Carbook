@@ -1,0 +1,433 @@
+﻿@model List<ResultCarPricingWithCarDto>
+@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+@* BACKGROUND SECTİON *@
+<div class="hero-wrap ftco-degree-bg" style="background-image: url('/carbook-master/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text justify-content-center align-items-center">
+            <div class="col-lg-8 ftco-animate">
+                <div class="text w-100 text-center mb-md-5 pb-md-5">
+					<h1 class="mb-4">Hızlı ve Kolay Araç Kiralama Yöntemi</h1>
+
+                    <p style="font-size: 18px;">
+						Hayalinizdeki yolculuğa bir adım daha yaklaşın! Uygun fiyatlı, bakımlı ve geniş araç seçeneklerimizle
+						dilediğiniz aracı kolayca kiralayın. Hızlı rezervasyon ve 7/24 destek ile her zaman yanınızdayız.
+                    </p>
+
+                    <a href="#" class="icon-wrap d-flex align-items-center mt-4 justify-content-center">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="ion-ios-play"></span>
+                        </div>
+                        <div class="heading-title ml-3">
+							<span>Araç kiralama için kolay adımlar</span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*  //SECTİON// *@
+
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+<section class="ftco-section ftco-no-pt bg-light">
+	<div class="container">
+		<div class="row no-gutters">
+			<div class="col-md-12 featured-top">
+				<div class="row no-gutters">
+
+					<!-- FORM -->
+					<div class="col-md-4 d-flex align-items-center">
+
+						<form method="post" asp-controller="Home" asp-action="Index" class="request-form bg-primary">
+
+							<h2>Seyahatinizi planlayın</h2>
+
+							@{
+								var locations = ViewBag.LocationID as List<SelectListItem>;
+							}
+
+							<!-- PICKUP -->
+							<div class="form-group">
+								<label class="label">Teslim alma konumu</label>
+
+								<select name="PickUpLocationID" class="form-control" style="color:black !important;">
+									<option value="">Konum seçin</option>
+
+									@if (locations != null && locations.Any())
+									{
+										foreach (var item in locations)
+										{
+											<option value="@item.Value">@item.Text</option>
+										}
+									}
+									else
+									{
+										<option disabled>Veri bulunamadı</option>
+									}
+								</select>
+							</div>
+
+							<!-- DROPOFF -->
+							<div class="form-group">
+								<label class="label">Teslim etme konumu</label>
+
+								<select name="DropOffLocationID" class="form-control" style="color:black !important;">
+									<option value="">Konum seçin</option>
+
+									@if (locations != null && locations.Any())
+									{
+										foreach (var item in locations)
+										{
+											<option value="@item.Value">@item.Text</option>
+										}
+									}
+									else
+									{
+										<option disabled>Veri bulunamadı</option>
+									}
+								</select>
+							</div>
+
+							<!-- DATES -->
+							<div class="d-flex">
+
+								<div class="form-group mr-2">
+									<label class="label">Teslim alma tarihi</label>
+									<input type="text"
+										   name="book_pick_date"
+										   class="form-control datepicker"
+										   id="book_pick_date"
+										   placeholder="Gün" />
+								</div>
+
+								<div class="form-group ml-2">
+									<label class="label">Teslim etme tarihi</label>
+									<input type="text"
+										   name="book_off_date"
+										   class="form-control datepicker"
+										   id="book_off_date"
+										   placeholder="Gün" />
+								</div>
+
+							</div>
+
+							<!-- TIME -->
+							<div class="form-group">
+								<label class="label">Teslim saati</label>
+								<input type="text"
+									   name="time_pick"
+									   class="form-control timepicker"
+									   id="time_pick"
+									   placeholder="Saat" />
+							</div>
+
+							<!-- SUBMIT -->
+							<div class="form-group">
+								<input type="submit"
+									   value="Şimdi araba kirala"
+									   class="btn btn-secondary py-3 px-4" />
+							</div>
+
+						</form>
+
+					</div>
+
+					<!-- RIGHT SIDE -->
+					<div class="col-md-8 d-flex align-items-center">
+
+						<div class="services-wrap rounded-right w-100">
+
+							<h3 class="heading-section mb-4">
+								Mükemmel Arabalarınızı Kiralamanın Daha İyi Bir Yolu
+							</h3>
+
+							<div class="row d-flex mb-4">
+
+								<div class="col-md-4 d-flex align-self-stretch ftco-animate">
+									<div class="services w-100 text-center">
+										<div class="icon d-flex align-items-center justify-content-center">
+											<span class="flaticon-route"></span>
+										</div>
+										<div class="text w-100">
+											<h3 class="heading mb-2">Teslim Alma Noktanızı Seçin</h3>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-4 d-flex align-self-stretch ftco-animate">
+									<div class="services w-100 text-center">
+										<div class="icon d-flex align-items-center justify-content-center">
+											<span class="flaticon-handshake"></span>
+										</div>
+										<div class="text w-100">
+											<h3 class="heading mb-2">En İyi Fırsatı Seçin</h3>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-4 d-flex align-self-stretch ftco-animate">
+									<div class="services w-100 text-center">
+										<div class="icon d-flex align-items-center justify-content-center">
+											<span class="flaticon-rent"></span>
+										</div>
+										<div class="text w-100">
+											<h3 class="heading mb-2">Kiralık Arabanızı Ayırın</h3>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+							<p>
+								<a href="#" class="btn btn-primary py-3 px-4">
+									Mükemmel Arabanızı Ayırın
+								</a>
+							</p>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+		
+@* SECTİON *@
+
+@await Component.InvokeAsync("_DefaultLast5CarsWithBrandsComponentPartial")
+
+
+@*ABOUT Section*@
+<section class="ftco-section ftco-about">
+	<div class="container">
+		<div class="row no-gutters">
+			<div class="col-md-6 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url(/carbook-master/images/about.jpg);">
+			</div>
+			<div class="col-md-6 wrap-about ftco-animate">
+				<div class="heading-section heading-section-white pl-md-5">
+					<span class="subheading">Hakkımızda</span>
+					<h2 class="mb-4">Carbook'a Hoşgeldiniz</h2>
+
+					<p>CarBook, araç kiralama deneyimini daha kolay, hızlı ve güvenilir hale getirmek amacıyla kurulmuş modern bir rent a car platformudur.
+						Kullanıcıların ihtiyaçlarına uygun araçları zahmetsizce bulabilmesini sağlamak için geniş araç yelpazesi, şeffaf fiyatlandırma ve 
+						kullanıcı dostu bir arayüz sunar.</p>
+					<p>Müşteri memnuniyetini ön planda tutan CarBook, hem bireysel hem de kurumsal kiralama ihtiyaçlarına profesyonel çözümler sunar. 
+						Günlük, haftalık ve uzun dönem kiralama seçenekleri ile her bütçeye ve ihtiyaca uygun alternatifler sağlar.</p>
+					<p>Teknolojiyi etkin şekilde kullanarak rezervasyon sürecini hızlandıran CarBook, güvenli ödeme altyapısı ve 7/24 destek hizmetiyle
+						kullanıcılarına sorunsuz bir kiralama deneyimi sunmayı hedefler.</p>
+					<p><a href="#" class="btn btn-primary py-3 px-4">Araç Ara</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+@*Service Section*@
+
+<section class="ftco-section">
+	<div class="container">
+		<div class="row justify-content-center mb-5">
+			<div class="col-md-7 text-center heading-section ftco-animate">
+				<span class="subheading">Servisler</span>
+				<h2 class="mb-3">En Son Hizmetlerimiz</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<div class="services services-2 w-100 text-center">
+					<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-wedding-car"></span></div>
+					<div class="text w-100">
+						<h3 class="heading mb-2">Düğün Töreni</h3>
+						<p>Her türlü düğün töreni için araç kiralama seçeneklerimiz vardır.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="services services-2 w-100 text-center">
+					<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-transportation"></span></div>
+					<div class="text w-100">
+						<h3 class="heading mb-2">Şehirlerarası Transfer  </h3>
+						<p>Tüm şehirlere şöförlü veya şöförsüz araç kiralamamız mevcuttur.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="services services-2 w-100 text-center">
+					<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car"></span></div>
+					<div class="text w-100">
+						<h3 class="heading mb-2">Havalimanı Transferi</h3>
+						<p>Havalimanında araç kiralama ve araç teslimat seçeneklerimiz vardır.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="services services-2 w-100 text-center">
+					<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-transportation"></span></div>
+					<div class="text w-100">
+						<h3 class="heading mb-2">Şehir Turu</h3>
+						<p>Şoförlü araçlarımızla sizlere şehir turu yaptırmaktan mutluluk duyarız.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+@*Section*@
+<section class="ftco-section ftco-intro" style="background-image: url(/carbook-master/images/bg_3.jpg);">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row justify-content-end">
+			<div class="col-md-6 heading-section heading-section-white ftco-animate">
+				<h2 class="mb-3">Bizimle Kazanmak İster misiniz? O halde Geç Kalmayın.</h2>
+				<a href="#" class="btn btn-primary btn-lg">Sürücü Olmak İiçin Tıklayın</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+@*Testimonial Section*@
+
+<section class="ftco-section testimony-section bg-light">
+	<div class="container">
+		<div class="row justify-content-center mb-5">
+			<div class="col-md-7 text-center heading-section ftco-animate">
+				<span class="subheading">Yorumlar</span>
+				<h2 class="mb-3">Mutlu Müşteriler</h2>
+			</div>
+		</div>
+		<div class="row ftco-animate">
+			<div class="col-md-12">
+				<div class="carousel-testimony owl-carousel ftco-owl">
+					<div class="item">
+						<div class="testimony-wrap rounded text-center py-4 pb-5">
+							<div class="user-img mb-2" style="background-image: url(/carbook-master/images/person_1.jpg)">
+							</div>
+							<div class="text pt-4">
+								<p class="mb-4">CarBook üzerinden çok hızlı bir şekilde araç kiraladım. Araç temizdi ve teslim süreci oldukça kolaydı. Kesinlikle tekrar kullanacağım.</p>
+								<p class="name">Ahmet Şahinkaya</p>
+								<span class="position">Otel İşletmecisi</span>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="testimony-wrap rounded text-center py-4 pb-5">
+							<div class="user-img mb-2" style="background-image: url(/carbook-master/images/person_3.jpg)">
+							</div>
+							<div class="text pt-4">
+								<p class="mb-4">Fiyatlar piyasaya göre gayet uygun ve araç seçenekleri çok çeşitli. Rezervasyon yapmak birkaç dakika sürdü, çok pratik bir sistem.</p>
+								<p class="name">Mete Pala</p>
+								<span class="position">Yazılım Geliştiricisi</span>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="testimony-wrap rounded text-center py-4 pb-5">
+							<div class="user-img mb-2" style="background-image: url(/carbook-master/images/person_3.jpg)">
+							</div>
+							<div class="text pt-4">
+								<p class="mb-4">İlk defa CarBook kullandım ve çok memnun kaldım. Araç tam zamanında teslim edildi, müşteri desteği de çok ilgiliydi.</p>
+								<p class="name">Adem Erdoğan </p>
+								<span class="position">Yazılımcı</span>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="testimony-wrap rounded text-center py-4 pb-5">
+							<div class="user-img mb-2" style="background-image: url(/carbook-master/images/person_1.jpg)">
+							</div>
+							<div class="text pt-4">
+								<p class="mb-4">Uzun yol için araç kiraladım, araç hem konforlu hem de sorunsuzdu. Süreç baştan sona güven vericiydi.</p>
+								<p class="name">Enes Şahiner</p>
+								<span class="position">İtfaiyeci</span>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="testimony-wrap rounded text-center py-4 pb-5">
+							<div class="user-img mb-2" style="background-image: url(/carbook-master/images/person_2.jpg)">
+							</div>
+							<div class="text pt-4">
+								<p class="mb-4">Kredi kartı ile ödeme ve iade süreci sorunsuz ilerledi. Kurumsal bir firma gibi çalışıyorlar, güvenilir buldum.</p>
+								<p class="name">Erdem Avcı</p>
+								<span class="position">Polis</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+@*Blog Section*@
+<section class="ftco-section">
+	<div class="container">
+		<div class="row justify-content-center mb-5">
+			<div class="col-md-7 heading-section text-center ftco-animate">
+				<span class="subheading">Blog</span>
+				<h2>Son Blog</h2>
+			</div>
+		</div>
+		<div class="row d-flex">
+			<div class="col-md-4 d-flex ftco-animate">
+				<div class="blog-entry justify-content-end">
+					<a href="blog-single.html" class="block-20" style="background-image: url('/carbook-master/images/image_1.jpg');">
+					</a>
+					<div class="text pt-4">
+						<div class="meta mb-3">
+							<div><a href="#">Mart. 29, 2026</a></div>
+							<div><a href="#">Admin</a></div>
+							<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+						</div>
+						<h3 class="heading mt-2"><a href="#">İşletme Büyümesi İçin Potansiyel Müşteri Oluşturmanın Önemi</a></h3>
+						<p><a href="#" class="btn btn-primary">Devamını Oku</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 d-flex ftco-animate">
+				<div class="blog-entry justify-content-end">
+					<a href="blog-single.html" class="block-20" style="background-image: url('/carbook-master/images/image_2.jpg');">
+					</a>
+					<div class="text pt-4">
+						<div class="meta mb-3">
+							<div><a href="#">Nisan. 05, 2026</a></div>
+							<div><a href="#">Admin</a></div>
+							<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+						</div>
+						<h3 class="heading mt-2"><a href="#">Otomotiv Sektöründe Müşteri Kazanımının Gücü</a></h3>
+						<p><a href="#" class="btn btn-primary">Devamını Oku</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 d-flex ftco-animate">
+				<div class="blog-entry">
+					<a href="blog-single.html" class="block-20" style="background-image: url('/carbook-master/images/image_3.jpg');">
+					</a>
+					<div class="text pt-4">
+						<div class="meta mb-3">
+							<div><a href="#">Nisan. 01, 2026</a></div>
+							<div><a href="#">Admin</a></div>
+							<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+						</div>
+						<h3 class="heading mt-2"><a href="#">Motorlu Taşıt Sektöründe Büyüme ve Müşteri Yönetimi</a></h3>
+						<p><a href="#" class="btn btn-primary">Devamını Oku</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>	
+
+@*Data Section*@
+@await Component.InvokeAsync("_DefaultStatisticsComponentPartial")
